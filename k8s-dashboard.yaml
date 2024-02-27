@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: https://github.com/sinotna/GitopsK8SDasshboard.git
     targetRevision: main
-#    path: deployment
+    path: deployment
     helm:
       parameters:
         - name: "environment"
