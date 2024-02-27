@@ -1,5 +1,5 @@
 ---
-Create Namespace
+#Create Namespace
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -18,14 +18,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kubernetes-dashboard
-  namespace: platform-applications
+  namespace: default
   finalizers:
     # Deletes the deployed application resources when this application is deleted.
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: platform-tools
-  project: platform
+    server: https://kubernetes.default.svc
+  project: default
   source:
     repoURL: https://github.com/sinotna/GitopsK8SDasshboard.git
     targetRevision: main
