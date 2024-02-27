@@ -1,17 +1,30 @@
 ---
+Create Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-tools
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-applications
+
+
+---
 # Source: argocd-application-template/templates/application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
+  namespace: platform-applications
   finalizers:
     # Deletes the deployed application resources when this application is deleted.
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: kubernetes-dashboard
-    name: kubernetes-dashboard
+    namespace: platform-tools
   project: platform
   source:
     repoURL: https://github.com/sinotna/GitopsK8SDasshboard.git
