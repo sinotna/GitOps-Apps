@@ -17,7 +17,7 @@ metadata:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kubernetes-dashboard
+  name: istio
   namespace: default
   finalizers:
     # Deletes the deployed application resources when this application is deleted.
@@ -28,7 +28,7 @@ spec:
     server: https://kubernetes.default.svc
   project: platform
   source:
-    repoURL: https://github.com/sinotna/GitopsK8SDasshboard.git
+    repoURL: https://github.com/sinotna/GitOpsIstio.git
     targetRevision: main
     path: deployment
     helm:
